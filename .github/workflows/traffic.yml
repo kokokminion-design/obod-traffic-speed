@@ -31,4 +31,5 @@ jobs:
           OBOD_TEAM_KEY: ${{ secrets.OBOD_TEAM_KEY }}
           OBOD_API_URL: https://asivoy.pythonanywhere.com/api
           TZ: Asia/Tashkent
+          MAX_POINTS: "5"
           
