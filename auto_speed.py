@@ -22,8 +22,20 @@ MAX_POINTS = int(os.getenv("MAX_POINTS", "0"))  # 0 — все точки
 
 
 def get_json(url, params=None):
-    response = requests.get(url, params=params, timeout=30)
-    response.raise_for_status()
+    response = requests.get(
+        url,
+        params=params,
+        timeout=30
+    )
+
+    if not response.ok:
+        print(f"HTTP статус: {response.status_code}")
+        print(f"Ответ сервера: {response.text[:2000]}")
+
+        raise RuntimeError(
+            f"Ошибка API: HTTP {response.status_code}"
+        )
+
     return response.json()
 
 
